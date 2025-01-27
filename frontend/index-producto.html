@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Productos</h1>
+    </header>
+
+    <main>
+        <h2>Productos Disponibles</h2>
+        <table id="productosTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Categoría ID</th>
+                    <th>Imagen</th>
+                    <th>Fecha de Creación</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        // Función para cargar los productos desde el backend
+        function cargarProductos() {
+            fetch('http://localhost:3000/productos')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('productosTable').getElementsByTagName('tbody')[0];
+                    data.forEach(producto => {
+                        const row = tbody.insertRow();
+                        row.innerHTML = `<td>${producto.id}</td><td>${producto.nombre}</td><td>${producto.descripcion}</td><td>${producto.precio}</td><td>${producto.stock}</td><td>${producto.categoria_id}</td><td>${producto.imagen}</td><td>${producto.creado_en}</td>`;
+                    });
+                })
+                .catch(error => console.error('Error al cargar los productos:', error));
+        }
+
+        // Llamar a la función para cargar productos al cargar la página
+        cargarProductos();
+    </script>
+</body>
+</html>

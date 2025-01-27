@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Pedidos</h1>
+    </header>
+
+    <main>
+        <h2>Pedidos Realizados</h2>
+        <table id="pedidosTable">
+            <thead>
+                <tr>
+                    <th>ID Pedido</th>
+                    <th>ID Usuario</th>
+                    <th>Estado</th>
+                    <th>Método de Pago</th>
+                    <th>Total</th>
+                    <th>Fecha de Creación</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        // Función para cargar los pedidos desde el backend
+        function cargarPedidos() {
+            fetch('http://localhost:3000/pedidos')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('pedidosTable').getElementsByTagName('tbody')[0];
+                    data.forEach(pedido => {
+                        const row = tbody.insertRow();
+                        row.innerHTML = `<td>${pedido.id}</td><td>${pedido.usuario_id}</td><td>${pedido.estado}</td><td>${pedido.metodo_pago}</td><td>${pedido.total}</td><td>${pedido.creado_en}</td>`;
+                    });
+                })
+                .catch(error => console.error('Error al cargar los pedidos:', error));
+        }
+
+        // Llamar a la función para cargar pedidos al cargar la página
+        cargarPedidos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend para gestión de usuarios",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  },
+  "scripts": {
+    "start": "live-server"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+  
