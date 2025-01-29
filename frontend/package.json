@@ -1,17 +1,29 @@
 {
-  "name": "frontend",
-  "version": "1.0.0",
-  "description": "Frontend para gestión de usuarios",
-  "main": "index.html",
-  "dependencies": {},
-  "devDependencies": {
-    "live-server": "^1.2.0"
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "Frontend para interactuar con el backend",
+    "main": "index.js",
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    "dependencies": {
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "react-scripts": "4.0.3"
   },
-  "scripts": {
-    "start": "live-server"
-  },
-  "author": "",
-  "license": "ISC"
-}
-
-  
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
